@@ -1,0 +1,263 @@
+{
+ "name": "county-changes-1790-1990",
+ "title": "Historical county changes, 1790–1990",
+ "description": "Richard L. Forstall's Population of States and Counties of the United States: 1790 to 1990 (U.S. Bureau of the Census, 1996) is an important research resource for anyone who works in economic history. Counties have changed over the course of history. New counties have emerged and some have been abolished. Forstall compiled every major change the Census Bureau recorded: counties formed, abolished, merged, split, or renamed. The trouble is that it is a book, and a tedious one, so researchers who use it usually code up the years they need and stop. I had an LLM read the whole thing and turn it into one machine-readable file, free to use under CC BY 4.0. As a check on accuracy, I compared it with the county changes that Martha Bailey and Andrew Goodman-Bacon coded by hand for their 2015 paper. For every one of their changes that comes from this book, this file reproduces their coding exactly.",
+ "homepage": "https://counties.andrewjoung.com/index.html",
+ "licenses": [
+  {
+   "name": "CC-BY-4.0",
+   "path": "https://creativecommons.org/licenses/by/4.0/",
+   "title": "Creative Commons Attribution 4.0"
+  }
+ ],
+ "sources": [
+  {
+   "title": "Forstall, Richard L. (1996). Population of States and Counties of the United States: 1790 to 1990. U.S. Bureau of the Census."
+  }
+ ],
+ "contributors": [
+  {
+   "title": "Andrew Joung",
+   "role": "author"
+  }
+ ],
+ "resources": [
+  {
+   "name": "county_changes",
+   "path": "data/county_changes.csv",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "schema": {
+    "fields": [
+     {
+      "name": "event_id",
+      "type": "string",
+      "description": "The item in the read: p{scan page}-t{table}-r{row}-c{claim} for a Notes-column entry, p{page}-f{footnote}-c{claim} for a footnote."
+     },
+     {
+      "name": "state",
+      "type": "string",
+      "description": "State name, upper case."
+     },
+     {
+      "name": "unit",
+      "type": "string",
+      "description": "county, parish, borough, city or subdivision."
+     },
+     {
+      "name": "county",
+      "type": "string",
+      "description": "The unit's name as the book prints it in its table row, e.g. \"Nuckolls (old)\"."
+     },
+     {
+      "name": "county_fips",
+      "type": "string",
+      "description": "FIPS code from the book's Part IV. A county abolished before 1930 carries the book's own code, the preceding county's code plus a decimal (38011.1), explained at the foot of every state page; blank where Part IV has no line."
+     },
+     {
+      "name": "event_type",
+      "type": "string",
+      "description": "birth, abolition, rename, boundary_change, reported_with or other."
+     },
+     {
+      "name": "partner_county",
+      "type": "string",
+      "description": "The other unit named in the event, as resolved to a table row where possible."
+     },
+     {
+      "name": "partner_unit",
+      "type": "string",
+      "description": "The partner's unit."
+     },
+     {
+      "name": "partner_state",
+      "type": "string",
+      "description": "The partner's state (a few partners are across a state line)."
+     },
+     {
+      "name": "partner_fips",
+      "type": "string",
+      "description": "The partner's FIPS code, as for county_fips."
+     },
+     {
+      "name": "partner_role",
+      "type": "string",
+      "description": "origin, minor_origin (the book's semicolon: a very small contribution), destination, minor_destination, other_name, reporting_unit or counterpart; blank with no partner."
+     },
+     {
+      "name": "census_before",
+      "type": "integer",
+      "description": "The census before the event, in the state's own sequence (Oklahoma has 1907, Alaska 1929 and 1939). Equal to census_after when the event is dated to a census; blank when undated."
+     },
+     {
+      "name": "census_after",
+      "type": "integer",
+      "description": "The census after the event."
+     },
+     {
+      "name": "event_year",
+      "type": "integer",
+      "description": "The year, where the book prints one."
+     },
+     {
+      "name": "when",
+      "type": "string",
+      "description": "The book's dating phrase as printed: \"after 1980\", \"1840-50\", \"December 7, 1990\"."
+     },
+     {
+      "name": "population_moved",
+      "type": "integer",
+      "description": "The population the book attaches to the event, where it gives one."
+     },
+     {
+      "name": "pdf_page",
+      "type": "integer",
+      "description": "The page of the scan."
+     },
+     {
+      "name": "printed_page",
+      "type": "integer",
+      "description": "The book's printed page."
+     },
+     {
+      "name": "location",
+      "type": "string",
+      "description": "\"Notes column\", \"Note 5\", or \"Note C31\" (a Virginia independent-city note)."
+     },
+     {
+      "name": "quote",
+      "type": "string",
+      "description": "The book's words for this event, verbatim."
+     },
+     {
+      "name": "confident",
+      "type": "boolean",
+      "description": "Whether the reader was sure of the item; every doubt was then settled by the author's rulings, so all true."
+     },
+     {
+      "name": "reason_code",
+      "type": "string",
+      "description": "The kind of doubt the reader had, kept for the record: print, syntax, typing or placement."
+     },
+     {
+      "name": "reason",
+      "type": "string",
+      "description": "The reader's doubt in words."
+     },
+     {
+      "name": "ruled",
+      "type": "string",
+      "description": "The author's ruling that settled the doubt, quoting it."
+     },
+     {
+      "name": "corrected",
+      "type": "boolean",
+      "description": "Whether a hand correction was applied (none were)."
+     },
+     {
+      "name": "checked",
+      "type": "string",
+      "description": "The date of the ruling."
+     }
+    ]
+   }
+  },
+  {
+   "name": "counties",
+   "path": "data/counties.csv",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "schema": {
+    "fields": [
+     {
+      "name": "state",
+      "type": "string",
+      "description": "State name, upper case."
+     },
+     {
+      "name": "unit",
+      "type": "string",
+      "description": "county, parish, borough, city or subdivision."
+     },
+     {
+      "name": "name",
+      "type": "string",
+      "description": "The unit's name as the book prints it."
+     },
+     {
+      "name": "present",
+      "type": "string",
+      "description": "The censuses at which the book gives the unit a population, space-separated."
+     },
+     {
+      "name": "see_notes",
+      "type": "string",
+      "description": "The note numbers the unit's Notes cell points to."
+     },
+     {
+      "name": "pages",
+      "type": "string",
+      "description": "The scan pages of the unit's table rows."
+     },
+     {
+      "name": "sections",
+      "type": "string",
+      "description": "The table section the unit sits under, where the state's table has sections (e.g. Inhabited Islands)."
+     },
+     {
+      "name": "n_rows",
+      "type": "integer",
+      "description": "The number of table rows read for the unit (one per census table it appears in)."
+     },
+     {
+      "name": "notes",
+      "type": "string",
+      "description": "The Notes cell, verbatim."
+     },
+     {
+      "name": "first_census",
+      "type": "number",
+      "description": "The first census in present."
+     },
+     {
+      "name": "last_census",
+      "type": "number",
+      "description": "The last census in present."
+     },
+     {
+      "name": "gaps",
+      "type": "string",
+      "description": "Censuses between first and last at which the unit has no population row."
+     },
+     {
+      "name": "unit_key",
+      "type": "string",
+      "description": "main, or city for Virginia's independent cities under their own Part IV heading."
+     },
+     {
+      "name": "p4_first_census",
+      "type": "number",
+      "description": "Part IV's first census for the unit."
+     },
+     {
+      "name": "no_change_since",
+      "type": "number",
+      "description": "Part IV's census since which there has been no significant change."
+     },
+     {
+      "name": "fips",
+      "type": "string",
+      "description": "Part IV's FIPS code, as for county_fips above (decimal codes for counties abolished before 1930)."
+     },
+     {
+      "name": "part4_id",
+      "type": "string",
+      "description": "The Part IV line the unit was matched to."
+     }
+    ]
+   }
+  }
+ ]
+}

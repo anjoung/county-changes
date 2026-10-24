@@ -1,0 +1,21 @@
+# Historical county changes, 1790–1990
+
+> Richard L. Forstall's Population of States and Counties of the United States: 1790 to 1990 (U.S. Bureau of the Census, 1996) is an important research resource for anyone who works in economic history. Counties have changed over the course of history. New counties have emerged and some have been abolished. Forstall compiled every major change the Census Bureau recorded: counties formed, abolished, merged, split, or renamed. The trouble is that it is a book, and a tedious one, so researchers who use it usually code up the years they need and stop. I had an LLM read the whole thing and turn it into one machine-readable file, free to use under CC BY 4.0. As a check on accuracy, I compared it with the county changes that Martha Bailey and Andrew Goodman-Bacon coded by hand for their 2015 paper. For every one of their changes that comes from this book, this file reproduces their coding exactly.
+
+## Data
+
+- [county_changes.csv](https://counties.andrewjoung.com/data/county_changes.csv): Reports every county-level event: the county and its FIPS code, what happened, the other county involved and its role, the census interval, the year where the book prints one, the population moved, and the book's page and words.
+- [county_changes.json](https://counties.andrewjoung.com/data/county_changes.json): The same events, as JSON records.
+- [counties.csv](https://counties.andrewjoung.com/data/counties.csv): Reports every county: the censuses it appears in, its Notes cell, and its Part IV dates and FIPS code.
+- [counties.json](https://counties.andrewjoung.com/data/counties.json): The same counties, as JSON records.
+- [Data dictionary](https://counties.andrewjoung.com/data/README.md): Every column of both files, the vocabularies, how it was made, the caveats.
+- [datapackage.json](https://counties.andrewjoung.com/datapackage.json): A [Frictionless](https://datapackage.org/) Data Package describing both files with column types.
+
+## Checks
+
+- [Bailey and Goodman-Bacon's county changes, row by row](https://counties.andrewjoung.com/bgb.html): their appendix Tables A4 and A5 against this log; 33 of 40 verified, 7 are decisions of theirs.
+- State pages at https://counties.andrewjoung.com/state/{xx}.html (two-letter code) list a state's units; county pages at https://counties.andrewjoung.com/county/{slug}.html give each unit's events as sentences with the scan linked.
+
+## Citation
+
+Joung, Andrew (2026). Historical county changes, 1790–1990, derived from Forstall (1996).
